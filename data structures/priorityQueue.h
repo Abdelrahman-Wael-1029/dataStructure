@@ -2,8 +2,8 @@
 // Created by abdelrahman wael on 6/13/2023.
 //
 
-#ifndef UNTITLED1_PRIORITYQUEUE_H
-#define UNTITLED1_PRIORITYQUEUE_H
+#ifndef PRIORITYQUEUE_H
+#define PRIORITYQUEUE_H
 
 #include<iostream>
 #include<vector>
@@ -21,8 +21,6 @@ public:
 
     priorityQueue();
 
-    void print();
-
     void push(T data);
 
     T top();
@@ -37,4 +35,4 @@ public:
 };
 
 
-#endif //UNTITLED1_PRIORITYQUEUE_H
+#endif //PRIORITYQUEUE_H

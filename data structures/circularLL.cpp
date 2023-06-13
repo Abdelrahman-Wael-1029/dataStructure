@@ -9,14 +9,14 @@ template<class T>
 circularLL<T>::circularLL(): head(nullptr), tail(nullptr), siz(0) {}
 
 template<class T>
-circularLL<T>::circularLL(T value): head(new nodeCLL<T>(value)), siz(1) {
+circularLL<T>::circularLL(T value): head(new nodeLL<T>(value)), siz(1) {
     tail = head;
     tail->setNext(head);
 }
 
 template<class T>
 void circularLL<T>::insertAtHead(T value) {
-    auto *newEl = new nodeCLL<T>(value);
+    auto *newEl = new nodeLL<T>(value);
     if (empty()) {
         head = newEl;
         tail = head;
@@ -31,7 +31,7 @@ void circularLL<T>::insertAtHead(T value) {
 
 template<class T>
 void circularLL<T>::insertAtEnd(T value) {
-    auto *newEl = new nodeCLL<T>(value);
+    auto *newEl = new nodeLL<T>(value);
     if (empty()) {
         head = newEl;
         tail = head;
@@ -57,8 +57,8 @@ void circularLL<T>::insertAt(T value, int index) {
         insertAtEnd(value);
         return;
     }
-    auto *newEl = new nodeCLL<T>(value);
-    nodeCLL<T> *temp = head;
+    auto *newEl = new nodeLL<T>(value);
+    nodeLL<T> *temp = head;
     while (--index)
         temp = temp->getNext();
     newEl->setNext(temp->getNext());
@@ -76,7 +76,7 @@ void circularLL<T>::removeAtHead() {
         head = nullptr;
         tail = nullptr;
     } else {
-        nodeCLL<T> *temp = head;
+        nodeLL<T> *temp = head;
         head = head->getNext();
         tail->setNext(head);
         delete temp;
@@ -95,7 +95,7 @@ void circularLL<T>::removeAtEnd() {
         head = nullptr;
         tail = nullptr;
     } else {
-        nodeCLL<T> *temp = head;
+        nodeLL<T> *temp = head;
         while (temp->getNext() != tail)
             temp = temp->getNext();
         delete tail;
@@ -119,10 +119,10 @@ void circularLL<T>::removeAt(int index) {
         removeAtEnd();
         return;
     }
-    nodeCLL<T> *temp = head;
+    nodeLL<T> *temp = head;
     while (--index)
         temp = temp->getNext();
-    nodeCLL<T> *temp2 = temp->getNext();
+    nodeLL<T> *temp2 = temp->getNext();
     temp->setNext(temp2->getNext());
     delete temp2;
     siz--;
@@ -134,10 +134,10 @@ T circularLL<T>::retrieveAt(int index) {
         throw std::runtime_error("Invalid position");
 
     }
-    nodeCLL<T> *temp = head;
+    nodeLL<T> *temp = head;
     while (index--)
         temp = temp->getNext();
-    return temp->getValue();
+    return temp->getData();
 }
 
 template<class T>
@@ -146,17 +146,17 @@ void circularLL<T>::replaceAt(T value, int index) {
         throw std::runtime_error("Invalid position");
 
     }
-    nodeCLL<T> *temp = head;
+    nodeLL<T> *temp = head;
     while (index--)
         temp = temp->getNext();
-    temp->setValue(value);
+    temp->setData(value);
 }
 
 template<class T>
 bool circularLL<T>::isExit(T value) {
-    nodeCLL<T> *temp = head;
+    nodeLL<T> *temp = head;
     do {
-        if (temp->getValue() == value)
+        if (temp->getData() == value)
             return true;
         temp = temp->getNext();
     } while (temp != head);
@@ -169,10 +169,10 @@ bool circularLL<T>::isEqual(T value, int index) {
         throw std::runtime_error("Invalid position");
 
     }
-    nodeCLL<T> *temp = head;
+    nodeLL<T> *temp = head;
     while (index--)
         temp = temp->getNext();
-    return temp->getValue() == value;
+    return temp->getData() == value;
 }
 
 template<class T>
@@ -185,7 +185,7 @@ void circularLL<T>::swap(int firstItemIdx, int secondItemIdx) {
     } else if (firstItemIdx > secondItemIdx) {
         swap(firstItemIdx, secondItemIdx);
     }
-    nodeCLL<T> *firstItem = head, *secondItem = head;
+    nodeLL<T> *firstItem = head, *secondItem = head;
     for (int i = 0; i < secondItemIdx; i++) {
         if (i == firstItemIdx) {
             firstItem = secondItem;
@@ -212,9 +212,9 @@ void circularLL<T>::print() {
     if (empty()) {
         return;
     }
-    nodeCLL<T> *temp = head;
+    nodeLL<T> *temp = head;
     do {
-        std::cout << temp->getValue() << " ";
+        std::cout << temp->getData() << " ";
         temp = temp->getNext();
     } while (temp != head);
     std::cout << std::endl;

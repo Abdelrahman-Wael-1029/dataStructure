@@ -2,8 +2,8 @@
 // Created by abdelrahman wael on 6/12/2023.
 //
 
-#ifndef UNTITLED1_QUEUE_H
-#define UNTITLED1_QUEUE_H
+#ifndef QUEUE_H
+#define QUEUE_H
 
 #include"linkedList.h"
 template<class T>
@@ -26,4 +26,4 @@ public:
 };
 
 
-#endif //UNTITLED1_QUEUE_H
+#endif //QUEUE_H

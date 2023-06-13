@@ -6,12 +6,12 @@
 #define CIRCULARLL_H
 
 #include <iostream>
-#include"nodeCLL.cpp"
+#include"nodeLL.cpp"
 
 template<class T>
 class circularLL {
-    nodeCLL<T> *head;
-    nodeCLL<T> *tail;
+    nodeLL<T> *head;
+    nodeLL<T> *tail;
     int siz;
 public:
     circularLL();

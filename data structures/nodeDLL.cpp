@@ -2,6 +2,9 @@
 // Created by abdelrahman wael on 6/12/2023.
 //
 
+#ifndef NODEDLL_H
+#define NODEDLL_H
+
 
 
 template<class T>
@@ -40,3 +43,5 @@ public:
     }
 
 };
+
+#endif //NODEDLL_H

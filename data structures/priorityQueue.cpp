@@ -9,14 +9,6 @@ template<class T>
 priorityQueue<T>::priorityQueue() : size(0) {}
 
 template<class T>
-void priorityQueue<T>::print() {
-    for (int i = 0; i < size; ++i) {
-        std::cout << arr[i] << " ";
-    }
-    std::cout << std::endl;
-}
-
-template<class T>
 void priorityQueue<T>::push(T data) {
     arr.push_back(data);
     ++size;
