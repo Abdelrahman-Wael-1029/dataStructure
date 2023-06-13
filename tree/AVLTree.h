@@ -2,8 +2,8 @@
 // Created by abdelrahman wael on 6/13/2023.
 //
 
-#ifndef UNTITLED1_AVLTREE_H
-#define UNTITLED1_AVLTREE_H
+#ifndef AVLTREE_H
+#define AVLTREE_H
 
 #include<iostream>
 #include"nodeTree.cpp"
@@ -61,4 +61,4 @@ public:
 
 
 
-#endif //UNTITLED1_AVLTREE_H
+#endif //AVLTREE_H
