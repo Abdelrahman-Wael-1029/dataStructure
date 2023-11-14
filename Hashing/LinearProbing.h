@@ -1,5 +1,5 @@
-#ifndef LINEAR_PROBING_H
-#define LINEAR_PROBING_H
+#ifndef LINEARPROBING_H
+#define LINEARPROBING_H
 
 #include <iostream>
 #include <string.h>
@@ -54,7 +54,7 @@ public:
 
     int next(T key, int add)
     {
-        return (this->hashFunction(key) + add) % this->capacity;
+        return (this->hashFunction(key) % this->capacity + add + this->capacity) % this->capacity;
     }
 
     bool insertItem(T key, V value)
@@ -63,7 +63,7 @@ public:
         {
             this->resize();
         }
-        int index = this->hashFunction(key) % this->capacity;
+        int index = this->next(key, 0);
         int i = 1;
         while (i < this->capacity)
         {
@@ -86,7 +86,7 @@ public:
 
     V getItem(T key)
     {
-        int index = this->hashFunction(key) % this->capacity;
+        int index = this->next(key, 0);
         int i = 1;
         while (i < this->capacity)
         {
@@ -101,15 +101,17 @@ public:
             }
             else
             {
+                this->insertItem(key, V{});
                 return V{};
             }
         }
+        this->insertItem(key, V{});
         return V{};
     }
 
     bool deleteItem(T key)
     {
-        int index = this->hashFunction(key) % this->capacity;
+        int index = this->next(key, 0);
         int i = 1;
         while (i < this->capacity)
         {
@@ -134,7 +136,7 @@ public:
 
     bool searchItem(T key)
     {
-        int index = this->hashFunction(key) % this->capacity;
+        int index = this->next(key, 0);
         int i = 1;
         while (i < this->capacity)
         {
